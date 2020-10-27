@@ -1,11 +1,22 @@
-import React from 'react'
+import React , { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem } from 'react-bootstrap'
+import { Row, Col, Image, ListGroup, Button, ListGroupItem } from 'react-bootstrap'
 import Rating from '../components/Rating'
-import books from '../books'
+import axios from 'axios'
 
-const BookScreen = ({match}) => {
-    const book = books.find((b) => b._id === Number(match.params.id))
+
+const BookScreen = ({ match }) => {
+  const [book, setBook] = useState({})
+
+  useEffect(() => {
+    const fetchBook = async () => {
+      const { data } = await axios.get(`/api/books/${match.params.id}`)
+
+      setBook(data)
+    }
+    fetchBook()
+  }, [match])
+
   return (
   <>
     <Link className='btn btn-light my-3' to='/'>
