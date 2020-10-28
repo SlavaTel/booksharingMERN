@@ -19,7 +19,7 @@ router.get('/', asyncHandler(async(req, res) => {
 // @route  GET /api/books/^1
 // @access Public   
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   const book = await Book.findById(req.params.id)
 
     if(book) {

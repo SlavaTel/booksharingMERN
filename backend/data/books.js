@@ -10,6 +10,7 @@ const books = [
     countInStock: 3,
     rating: 4.5,
     numReviews: 55,
+    nameOfStock: 'Store 1'
   },
   {
     name: 'A Deadly Education',
@@ -22,6 +23,7 @@ const books = [
     countInStock: 5,
     rating: 3.5,
     numReviews: 10,
+    nameOfStock: 'Store 1'
   },
   {
     name: 'Keep Moving: Notes on Loss, Creativity, and Change',
@@ -34,6 +36,7 @@ const books = [
     countInStock: 3,
     rating: 5,
     numReviews: 20,
+    nameOfStock: 'Store 1'
   },
   {
     name: 'Leave the World Behind',
@@ -46,6 +49,7 @@ const books = [
     countInStock: 4,
     rating: 5,
     numReviews: 14,
+    nameOfStock: 'Store 1'
   },
   {
     name: 'The Invisible Life of Addie Larue',
@@ -58,6 +62,7 @@ const books = [
     countInStock: 2,
     rating: 4.5,
     numReviews: 20,
+    nameOfStock: 'Store 3'
   },
   {
     name: 'Rough House: A Memoir',
@@ -70,6 +75,7 @@ const books = [
     countInStock: 5,
     rating: 5,
     numReviews: 25,
+    nameOfStock: 'Store 2'
   },
   {
     name: 'The End of the Day',
@@ -82,6 +88,7 @@ const books = [
     countInStock: 2,
     rating: 4,
     numReviews: 10,
+    nameOfStock: 'Store 3'
   },
   {
     name: 'White Tears/Brown Scars',
@@ -94,6 +101,7 @@ const books = [
     countInStock: 2,
     rating: 5,
     numReviews: 11,
+    nameOfStock: 'Store 2'
   },
 ]
 
