@@ -4,6 +4,8 @@ const reviewSchema = mongoose.Schema({
   name: { type: String, required: true},
   rating: { type: Number, required: true},
   comment: { type: String, required: true},
+}, {
+  timestamps: true
 })
 
 const bookSchema = mongoose.Schema(
@@ -43,6 +45,10 @@ const bookSchema = mongoose.Schema(
     required: true,
     default: 0
   },
+  nameOfStock: {
+    type: String,
+    required: true,
+  },
   reviews:[reviewSchema],
   rating: {
     type: Number,
@@ -59,6 +65,6 @@ const bookSchema = mongoose.Schema(
   timestamps: true
 })
 
-const User = mongoose.model('User', userSchema)
+const Book = mongoose.model('Book', bookSchema)
 
-export default User
+export default Book

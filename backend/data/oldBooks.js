@@ -1,5 +1,6 @@
-const books = [
+const books1 = [
   {
+    _id: 1,
     name: 'Hench',
     image: '/images/Hench.jpg',
     description:
@@ -12,6 +13,7 @@ const books = [
     numReviews: 55,
   },
   {
+    _id: 2,
     name: 'A Deadly Education',
     image: '/images/Deadly_aducation.gif',
     description:
@@ -24,6 +26,7 @@ const books = [
     numReviews: 10,
   },
   {
+    _id: 3,
     name: 'Keep Moving: Notes on Loss, Creativity, and Change',
     image: '/images/Keep_Moving.jpg',
     description:
@@ -36,6 +39,7 @@ const books = [
     numReviews: 20,
   },
   {
+    _id: 4,
     name: 'Leave the World Behind',
     image: '/images/Leave_the_world_about.gif',
     description:
@@ -48,6 +52,7 @@ const books = [
     numReviews: 14,
   },
   {
+    _id: 5,
     name: 'The Invisible Life of Addie Larue',
     image: '/images/The_invisible_life.webp',
     description:
@@ -60,6 +65,7 @@ const books = [
     numReviews: 20,
   },
   {
+    _id: 6,
     name: 'Rough House: A Memoir',
     image: '/images/Deadly_aducation.gif',
     description:
@@ -72,6 +78,7 @@ const books = [
     numReviews: 25,
   },
   {
+    _id: 7,
     name: 'The End of the Day',
     image: '/images/The_end_of_days.gif',
     description:
@@ -84,6 +91,7 @@ const books = [
     numReviews: 10,
   },
   {
+    _id: 8,
     name: 'White Tears/Brown Scars',
     image: '/images/White_tears.webp',
     description:
@@ -97,4 +105,4 @@ const books = [
   },
 ]
 
-export default books
+export default books1
