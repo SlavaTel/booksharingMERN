@@ -10,7 +10,7 @@ import { listBookDetails } from '../actions/bookActions'
 
 const BookScreen = ({ history, match }) => {
 
-  const [qty, setQty] = useState(0)
+  const [qty, setQty] = useState(1)
 
   const dispatch = useDispatch()
 
@@ -19,12 +19,6 @@ const BookScreen = ({ history, match }) => {
   const { loading, error, book } = bookDetails
 
   useEffect(() => {
-    // const fetchBook = async () => {
-    //   const { data } = await axios.get(`/api/books/${match.params.id}`)
-
-    //   setBook(data)
-    // }
-    // fetchBook()
 
   dispatch(listBookDetails(match.params.id))
   }, [dispatch, match])
