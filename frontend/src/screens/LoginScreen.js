@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Form, Button, Row, Col, FormGroup, FormLabel, FormControl } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -18,7 +18,7 @@ const LoginScreen = ({ location, history }) => {
 
   const userLogin = useSelector(state => state.userLogin)
 
-  const { login, error, userInfo } = userLogin
+  const { loading, error, userInfo } = userLogin
 
   const redirect = location.search ? location.search.split('=')[1] : '/'
 

@@ -35,6 +35,7 @@ const userInfoFromStorage = localStorage.getItem('userInfo')
 const bookingAddressFromStorage = localStorage.getItem('bookingAddress')
   ? JSON.parse(localStorage.getItem('bookingAddress'))
   : {}
+  
 
 const initialState = {
   cart: {

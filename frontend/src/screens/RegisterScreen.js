@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Form, Button, Row, Col, FormGroup, FormLabel, FormControl } from 'react-bootstrap'
+import { Form, Button, Row, Col} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from './../components/Message'
 import Loader from './../components/Loader'
@@ -10,7 +10,7 @@ import FormContainer from './../components/FormContainer';
 
 
 const RegisterScreen = ({ location, history }) => {
-  const [name, setEmail] = useState('')
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -19,7 +19,7 @@ const RegisterScreen = ({ location, history }) => {
 
   const userRegister = useSelector(state => state.userRegister)
 
-  const { login, error, userInfo } = userLogin
+  const { loading, error, userInfo } = userRegister
 
   const redirect = location.search ? location.search.split('=')[1] : '/'
 

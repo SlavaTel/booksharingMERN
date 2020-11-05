@@ -1,5 +1,4 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from './../components/Message'
@@ -10,7 +9,7 @@ import { getUserDetails, updateUserProfile } from '../actions/userActions'
 
 
 const ProfileScreen = ({ location, history }) => {
-  const [name, setEmail] = useState('')
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -19,7 +18,7 @@ const ProfileScreen = ({ location, history }) => {
   const dispatch = useDispatch()
 
   const userDetails = useSelector(state => state.userDetails)
-  const { login, error, user} = userDetails
+  const { loading, error, user} = userDetails
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
@@ -33,7 +32,7 @@ const ProfileScreen = ({ location, history }) => {
     } else {
       if (!user || !user.name) {
         dispatch(getUserDetails('profile'))
-        dispatch(listMyOrders())
+        // dispatch(listMyOrders())
       } else {
         setName(user.name)
         setEmail(user.email)

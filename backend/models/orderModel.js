@@ -21,14 +21,15 @@ const orderSchema = mongoose.Schema({
   ],
   bookingAdress: {
     address: {type: String,required: true},
-    city: {type: String,required: true, default: "Minsk"}
+    city: {type: String,required: true, default: "Minsk"},
+    phoneNumber: {type: String}
   },
   bookingResult: {
     id: { type: String },
     status: { type: String },   
     update_time: { type: String },
     email_adress: { type: String },
-    phone_number: {type: String}
+    phoneNumber: {type: String}
   },
   isBooked: {
     type: Boolean,
