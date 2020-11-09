@@ -11,6 +11,7 @@ const orderSchema = mongoose.Schema({
       name: {type: String, required: true},
       qty: {type: Number, required: true},
       image: {type: String, required: true},
+      price: { type: Number, required: true },
       nameOfStock: {type: String, required: true},
       book: {
         type: mongoose.Schema.Types.ObjectId,
@@ -24,12 +25,21 @@ const orderSchema = mongoose.Schema({
     city: {type: String,required: true, default: "Minsk"},
     phoneNumber: {type: String}
   },
+  paymentMethod: {
+    type: String,
+    required: true,
+  },
   bookingResult: {
     id: { type: String },
     status: { type: String },   
     update_time: { type: String },
     email_adress: { type: String },
     phoneNumber: {type: String}
+  },
+  isPaid: {
+    type: Boolean,
+    required: true,
+    default: false,
   },
   isBooked: {
     type: Boolean,

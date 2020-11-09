@@ -7,10 +7,10 @@ import {
 } from './reducers/bookReducers'
 import { cartReducer } from './reducers/cartReducers'
 import { 
-  userLoginReducer, 
+  userLoginReducer,
   userRegisterReducer,
   userDetailsReducer,
-  userUpdateProfileReducer 
+  userUpdateProfileReducer,
 } from './reducers/userReducers'
 
 const reducer = combineReducers({

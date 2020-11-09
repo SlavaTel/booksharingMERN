@@ -60,6 +60,14 @@ const BookScreen = ({ history, match }) => {
         </Col>
         <Col md={3}>
           <ListGroup variant = 'flush'>
+            <ListGroup.Item>
+              <Row>
+                <Col>Price:</Col>
+                <Col>
+                  <strong>${book.price}</strong>
+                </Col>
+              </Row>
+            </ListGroup.Item>
             <ListGroupItem>
               <Row>
                 <Col>Status:</Col>
