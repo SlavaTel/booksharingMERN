@@ -9,8 +9,10 @@ import BookScreen from './screens/BookScreen'
 import CartScreen from './screens/CartScreen'
 import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
-import ProfileScreen from './screens/ProfileScreen';
+import ProfileScreen from './screens/ProfileScreen'
 import BookingScreen from './screens/BookingScreen'
+import PaymentScreen from './screens/PaymentScreen'
+import PlaceOrderScreen from './screens/PlaceOrderScreen'
 
 
 
@@ -21,6 +23,8 @@ const App = () => {
       <Header/>
       <main className='py-3'>
         <Container>
+          <Route path='/placeorder' component={ PlaceOrderScreen } /> 
+          <Route path='/payment' component={ PaymentScreen } />    
           <Route path='/booking' component={ BookingScreen } />             
           <Route path='/login' component={ LoginScreen } /> 
           <Route path='/register' component={ RegisterScreen } /> 

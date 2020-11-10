@@ -29,7 +29,12 @@ const orderSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  bookingResult: {
+  totalPrice: {
+    type: Number,
+    required: true,
+    default: 0.0,
+  },
+  paymentResult: {
     id: { type: String },
     status: { type: String },   
     update_time: { type: String },
@@ -40,6 +45,9 @@ const orderSchema = mongoose.Schema({
     type: Boolean,
     required: true,
     default: false,
+  },
+  paidAt: {
+    type: Date
   },
   isBooked: {
     type: Boolean,
