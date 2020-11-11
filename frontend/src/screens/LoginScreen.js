@@ -45,6 +45,7 @@ const LoginScreen = ({ location, history }) => {
             type='email'
             placeholder='Enter email'
             value={email}
+            debugger
             onChange={(e) => setEmail(e.target.value)}
           >  
           </FormControl>
