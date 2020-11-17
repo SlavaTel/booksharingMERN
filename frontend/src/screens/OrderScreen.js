@@ -9,11 +9,11 @@ import Loader from '../components/Loader'
 import {
   getOrderDetails,
   payOrder,
-  deliverOrder,
+  bookingOrder,
 } from '../actions/orderActions'
 import {
   ORDER_PAY_RESET,
-  ORDER_DELIVER_RESET,
+  ORDER_BOOKING_RESET,
 } from '../constants/orderConstants'
 
 const OrderScreen = ({ match, history }) => {
@@ -29,8 +29,8 @@ const OrderScreen = ({ match, history }) => {
   const orderPay = useSelector((state) => state.orderPay)
   const { loading: loadingPay, success: successPay } = orderPay
 
-  const orderDeliver = useSelector((state) => state.orderDeliver)
-  const { loading: loadingDeliver, success: successDeliver } = orderDeliver
+  const orderBooking = useSelector((state) => state.orderBooking)
+  const { loading: loadingBooking, success: successBooking } = orderBooking
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
@@ -63,9 +63,9 @@ const OrderScreen = ({ match, history }) => {
       document.body.appendChild(script)
     }
 
-    if (!order || successPay || successDeliver || order._id !== orderId) {
+    if (!order || successPay || successBooking || order._id !== orderId) {
       dispatch({ type: ORDER_PAY_RESET })
-      dispatch({ type: ORDER_DELIVER_RESET })
+      dispatch({ type: ORDER_BOOKING_RESET })
       dispatch(getOrderDetails(orderId))
     } else if (!order.isPaid) {
       if (!window.paypal) {
@@ -74,15 +74,15 @@ const OrderScreen = ({ match, history }) => {
         setSdkReady(true)
       }
     }
-  }, [dispatch, orderId, successPay, successDeliver, order])
+  }, [dispatch, orderId, successPay, successBooking, order])
 
   const successPaymentHandler = (paymentResult) => {
     console.log(paymentResult)
     dispatch(payOrder(orderId, paymentResult))
   }
 
-  const deliverHandler = () => {
-    dispatch(deliverOrder(order))
+  const bookingHandler = () => {
+    dispatch(bookingOrder(order))
   }
 
   return loading ? (
@@ -96,7 +96,7 @@ const OrderScreen = ({ match, history }) => {
         <Col md={8}>
           <ListGroup variant='flush'>
             <ListGroup.Item>
-              <h2>Shipping</h2>
+              <h2>Booking</h2>
               <p>
                 <strong>Name: </strong> {order.user.name}
               </p>
@@ -107,15 +107,15 @@ const OrderScreen = ({ match, history }) => {
               <p>
                 <strong>Address:</strong>
                 {order.bookingAddress.address}, {order.bookingAddress.city}{' '}
-                {order.bookingAddress.postalCode},{' '}
+                {order.bookingAddress.phoneNumber},{' '}
                 {order.bookingAddress.country}
               </p>
-              {order.isDelivered ? (
+              {order.isBooked ? (
                 <Message variant='success'>
-                  Delivered on {order.deliveredAt}
+                  Delivered on {order.bookedAt}
                 </Message>
               ) : (
-                <Message variant='danger'>Not Delivered</Message>
+                <Message variant='danger'>Not Booked</Message>
               )}
             </ListGroup.Item>
 
@@ -150,7 +150,7 @@ const OrderScreen = ({ match, history }) => {
                           />
                         </Col>
                         <Col>
-                          <Link to={`/product/${item.product}`}>
+                          <Link to={`/book/${item.product}`}>
                             {item.name}
                           </Link>
                         </Col>
@@ -177,7 +177,7 @@ const OrderScreen = ({ match, history }) => {
                   <Col>${order.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
-              <ListGroup.Item>
+              {/* <ListGroup.Item>
                 <Row>
                   <Col>Shipping</Col>
                   <Col>${order.shippingPrice}</Col>
@@ -188,7 +188,7 @@ const OrderScreen = ({ match, history }) => {
                   <Col>Tax</Col>
                   <Col>${order.taxPrice}</Col>
                 </Row>
-              </ListGroup.Item>
+              </ListGroup.Item> */}
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
@@ -208,18 +208,18 @@ const OrderScreen = ({ match, history }) => {
                   )}
                 </ListGroup.Item>
               )}
-              {loadingDeliver && <Loader />}
+              {loadingBooking && <Loader />}
               {userInfo &&
                 userInfo.isAdmin &&
                 order.isPaid &&
-                !order.isDelivered && (
+                !order.isBooked && (
                   <ListGroup.Item>
                     <Button
                       type='button'
                       className='btn btn-block'
-                      onClick={deliverHandler}
+                      onClick={bookingHandler}
                     >
-                      Mark As Delivered
+                      Mark As Booked
                     </Button>
                   </ListGroup.Item>
                 )}
