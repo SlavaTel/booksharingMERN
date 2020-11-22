@@ -4,7 +4,7 @@ import { Table, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import Paginate from '../components/Paginate'
+// import Paginate from '../components/Paginate'
 import {
   listBooks,
   deleteBook,
@@ -12,7 +12,7 @@ import {
 } from '../actions/bookActions'
 import { BOOK_CREATE_RESET } from '../constants/bookConstants'
 
-const bookListScreen = ({ history, match }) => {
+const BookListScreen = ({ history, match }) => {
   const pageNumber = match.params.pageNumber || 1
 
   const dispatch = useDispatch()
@@ -129,11 +129,11 @@ const bookListScreen = ({ history, match }) => {
               ))}
             </tbody>
           </Table>
-          <Paginate pages={pages} page={page} isAdmin={true} />
+          {/* <Paginate pages={pages} page={page} isAdmin={true} /> */}
         </>
       )}
     </>
   )
 }
 
-export default bookListScreen
+export default BookListScreen
