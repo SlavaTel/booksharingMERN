@@ -15,7 +15,13 @@ import {
   BOOK_CREATE_REQUEST,
   BOOK_DELETE_FAIL,
   BOOK_DELETE_SUCCESS,
-  BOOK_DELETE_REQUEST
+  BOOK_DELETE_REQUEST,
+  BOOK_CREATE_REVIEW_REQUEST,
+  BOOK_CREATE_REVIEW_SUCCESS,
+  BOOK_CREATE_REVIEW_FAIL,
+  BOOK_TOP_REQUEST,
+  BOOK_TOP_SUCCESS,
+  BOOK_TOP_FAIL,
  } from '../constants/bookConstants'
  import { logout } from './userActions'
 
@@ -178,3 +184,65 @@ export const updateBook = (book) => async (dispatch, getState) => {
     })
   }
 }
+
+export const createBookReview = (bookId, review) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    dispatch({
+      type: BOOK_CREATE_REVIEW_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    await axios.post(`/api/books/${bookId}/reviews`, review, config)
+
+    dispatch({
+      type: BOOK_CREATE_REVIEW_SUCCESS,
+    })
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    if (message === 'Not authorized, token failed') {
+      dispatch(logout())
+    }
+    dispatch({
+      type: BOOK_CREATE_REVIEW_FAIL,
+      payload: message,
+    })
+  }
+}
+
+export const listTopBooks = () => async (dispatch) => {
+  try {
+    dispatch({ type: BOOK_TOP_REQUEST })
+
+    const { data } = await axios.get(`/api/books/top`)
+
+    dispatch({
+      type: BOOK_TOP_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: BOOK_TOP_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+

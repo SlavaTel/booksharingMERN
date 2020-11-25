@@ -7,6 +7,8 @@ import {
   bookDeleteReducer,
   bookCreateReducer,
   bookUpdateReducer,
+  bookReviewCreateReducer,
+  bookTopRatedReducer,
 } from './reducers/bookReducers'
 import { cartReducer } from './reducers/cartReducers'
 import { 
@@ -24,7 +26,9 @@ import {
   orderCreateReducer,
   orderDetailsReducer,
   orderPayReducer,
-  orderListMyReducer
+  orderListMyReducer,
+  orderBookingReducer,
+  orderListReducer,
 
 } from './reducers/orderReducers'
 
@@ -34,6 +38,8 @@ const reducer = combineReducers({
     bookDelete: bookDeleteReducer,
     bookCreate: bookCreateReducer,
     bookUpdate: bookUpdateReducer,
+    bookReviewCreate: bookReviewCreateReducer,
+    bookTopRated: bookTopRatedReducer,
     cart: cartReducer,
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
@@ -46,6 +52,10 @@ const reducer = combineReducers({
     orderDetails: orderDetailsReducer,
     orderPay: orderPayReducer,
     orderListMy: orderListMyReducer,
+    orderBooking: orderBookingReducer,
+    orderList: orderListReducer,
+
+
 
 
     
