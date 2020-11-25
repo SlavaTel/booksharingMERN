@@ -28,7 +28,7 @@ const BookingScreen = ({ history }) => {
       <h1>Booking</h1>
       <Form onSubmit={submitHamdler}>
         <Form.Group controlId='address'>
-          <Form.Label>address</Form.Label>
+          <Form.Label>Address</Form.Label>
           <Form.Control
             type='text'
             placeholder='Enter address'
@@ -37,7 +37,7 @@ const BookingScreen = ({ history }) => {
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='city'>
-          <Form.Label>city</Form.Label>
+          <Form.Label>City</Form.Label>
           <Form.Control
             type='text'
             placeholder='Enter city'

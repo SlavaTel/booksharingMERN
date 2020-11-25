@@ -7,11 +7,9 @@ import {
   BOOK_DETAILS_REQUEST, 
   BOOK_DETAILS_SUCCESS, 
   BOOK_DETAILS_FAIL,
-  BOOK_UPDATE_RESET,
   BOOK_UPDATE_FAIL,
   BOOK_UPDATE_SUCCESS,
   BOOK_UPDATE_REQUEST,
-  BOOK_CREATE_RESET,
   BOOK_CREATE_FAIL,
   BOOK_CREATE_SUCCESS,
   BOOK_CREATE_REQUEST,
@@ -26,7 +24,8 @@ export const listBooks = () => async (dispatch) => {
   try {
     dispatch({type: BOOK_LIST_REQUEST})
 
-    const { data } = await axios.get('/api/books')
+    const { data } = await axios.get(
+      `/api/books?keyword=${keyword}&pageNumber=${pageNumber}`)
 
     dispatch({
       type: BOOK_LIST_SUCCESS,
