@@ -6,9 +6,24 @@ import Book from '../models/bookModel.js'
 // @access Public   
 
 const getBooks =  asyncHandler(async (req, res) => {
-  const books = await Book.find({})
-  
-  res.json(books)
+  const pageSize = 10
+  const page = Number(req.query.pageNumber) || 1
+
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: 'i',
+        },
+      }
+    : {}
+
+  const count = await Book.countDocuments({ ...keyword })
+  const books = await Book.find({ ...keyword })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1))
+    
+  res.json({books, page, pages: Math.ceil(count / pageSize)})
 })
 
 // @desc   Fetch single book
