@@ -26,7 +26,7 @@ import {
  import { logout } from './userActions'
 
 
-export const listBooks = () => async (dispatch) => { 
+export const listBooks = (keyword = '', pageNumber = '') => async (dispatch) => { 
   try {
     dispatch({type: BOOK_LIST_REQUEST})
 

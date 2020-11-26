@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
-import { listBookDetails, updateBook } from '../actions/productActions'
-import { BOOK_UPDATE_RESET } from '../constants/productConstants'
+import { listBookDetails, updateBook } from '../actions/bookActions'
+import { BOOK_UPDATE_RESET } from '../constants/bookConstants'
 
 const BookEditScreen = ({ match, history }) => {
   const bookId = match.params.id
@@ -44,7 +44,7 @@ const BookEditScreen = ({ match, history }) => {
         setName(book.name)
         setPrice(book.price)
         setImage(book.image)
-        setBrand(book.brand)
+        setAuthor(book.author)
         setCategory(book.category)
         setCountInStock(book.countInStock)
         setDescription(book.description)
@@ -78,8 +78,8 @@ const BookEditScreen = ({ match, history }) => {
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(
-      updateProduct({
-        _id: productId,
+      updateBook({
+        _id: bookId,
         name,
         price,
         image,

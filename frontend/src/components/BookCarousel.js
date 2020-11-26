@@ -6,7 +6,7 @@ import Loader from './Loader'
 import Message from './Message'
 import { listTopBooks } from '../actions/bookActions'
 
-const ProductCarousel = () => {
+const BookCarousel = () => {
   const dispatch = useDispatch()
 
   const bookTopRated = useSelector((state) => state.bookTopRated)

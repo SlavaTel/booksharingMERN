@@ -82,7 +82,6 @@ const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
 }
 
-// const initialState = {}
 
 const middleware = [thunk]
 
