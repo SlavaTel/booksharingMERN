@@ -20,7 +20,7 @@ const reducer = combineReducers({
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
     userDetails: userDetailsReducer,
-    userUpdateProfile: userUpdateProfileReducer
+    userUpdateProfile: userUpdateProfileReducer,
     
 })
 
@@ -28,9 +28,9 @@ const cartItemsFromStorage = localStorage.getItem('cartItems')
   ? JSON.parse(localStorage.getItem('cartItems'))
   : []
 
-const userInfoFromStorage = localStorage.getItem('userInfo')
+  const userInfoFromStorage = localStorage.getItem('userInfo')
   ? JSON.parse(localStorage.getItem('userInfo'))
-  : null
+  : {}
 
 const bookingAddressFromStorage = localStorage.getItem('bookingAddress')
   ? JSON.parse(localStorage.getItem('bookingAddress'))
@@ -49,7 +49,9 @@ const initialState = {
 
 const middleware = [thunk]
 
-const store = createStore(reducer, initialState, composeWithDevTools
-    (applyMiddleware(...middleware)))
+const store = createStore(
+  reducer, 
+  initialState, 
+  composeWithDevTools(applyMiddleware(...middleware)))
 
     export default store

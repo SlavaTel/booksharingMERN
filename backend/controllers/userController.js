@@ -11,7 +11,7 @@ const authUser =  asyncHandler(async (req, res) => {
 
   const user = await User.findOne({ email })
 
-  if(user && (await User.matchPassword(password))) {
+  if(user && (await user.matchPassword(password))) {
     res.json({
       _id: user._id,
       name: user.name,
@@ -68,8 +68,9 @@ const registerUser =  asyncHandler(async (req, res) => {
 // @route  GET /api/users/profile
 // @access Private  
 
-const getUserProfile =  asyncHandler(async (req, res) => {
+const getUserProfile = (async (req, res) => {
   const user = await User.findById(req.user._id)
+  
 
   if (user) {
     res.json({
@@ -79,8 +80,8 @@ const getUserProfile =  asyncHandler(async (req, res) => {
       isAdmin: user.isAdmin,
     })
   } else {
-      res.status(404)
-      throw new Error('User not found')
+    res.status(404)
+    throw new Error('User not found')
   }
 })
 
