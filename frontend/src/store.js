@@ -3,24 +3,61 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { 
   bookListReducer, 
-  bookDetailsReducer 
+  bookDetailsReducer,
+  bookDeleteReducer,
+  bookCreateReducer,
+  bookUpdateReducer,
+  bookReviewCreateReducer,
+  bookTopRatedReducer,
 } from './reducers/bookReducers'
 import { cartReducer } from './reducers/cartReducers'
 import { 
-  userLoginReducer, 
+  userLoginReducer,
   userRegisterReducer,
   userDetailsReducer,
-  userUpdateProfileReducer 
+  userUpdateProfileReducer,
+  userListReducer,
+  userDeleteReducer,
+  userUpdateReducer
+
+
 } from './reducers/userReducers'
+import {
+  orderCreateReducer,
+  orderDetailsReducer,
+  orderPayReducer,
+  orderListMyReducer,
+  orderBookingReducer,
+  orderListReducer,
+
+} from './reducers/orderReducers'
 
 const reducer = combineReducers({
     bookList: bookListReducer,
     bookDetails: bookDetailsReducer,
+    bookDelete: bookDeleteReducer,
+    bookCreate: bookCreateReducer,
+    bookUpdate: bookUpdateReducer,
+    bookReviewCreate: bookReviewCreateReducer,
+    bookTopRated: bookTopRatedReducer,
     cart: cartReducer,
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
     userDetails: userDetailsReducer,
     userUpdateProfile: userUpdateProfileReducer,
+    userList: userListReducer,
+    userDelete: userDeleteReducer,
+    userUpdate: userUpdateReducer,
+    orderCreate: orderCreateReducer,
+    orderDetails: orderDetailsReducer,
+    orderPay: orderPayReducer,
+    orderListMy: orderListMyReducer,
+    orderBooking: orderBookingReducer,
+    orderList: orderListReducer,
+
+
+
+
     
 })
 
@@ -45,7 +82,6 @@ const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
 }
 
-// const initialState = {}
 
 const middleware = [thunk]
 

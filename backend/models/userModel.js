@@ -27,7 +27,7 @@ const userSchema = mongoose.Schema({
 
 // Mongoose middleware compare passwords entered with password from DB
 
-userSchema.methods.matchPassword = async function(enteredPassword) {
+userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password)
 }
 

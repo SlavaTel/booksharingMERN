@@ -6,11 +6,19 @@ import Rating from '../components/Rating'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listBookDetails } from '../actions/bookActions'
+import Meta from '../components/Meta'
+import {
+  listBooksDetails,
+  createBookReview,
+} from '../actions/bookActions'
+import { BOOK_CREATE_REVIEW_RESET } from '../constants/bookConstants'
 
 
 const BookScreen = ({ history, match }) => {
 
   const [qty, setQty] = useState(1)
+  const [rating, setRating] = useState(0)
+  const [comment, setComment] = useState('')
 
   const dispatch = useDispatch()
 
@@ -60,6 +68,14 @@ const BookScreen = ({ history, match }) => {
         </Col>
         <Col md={3}>
           <ListGroup variant = 'flush'>
+            <ListGroup.Item>
+              <Row>
+                <Col>Price:</Col>
+                <Col>
+                  <strong>${book.price}</strong>
+                </Col>
+              </Row>
+            </ListGroup.Item>
             <ListGroupItem>
               <Row>
                 <Col>Status:</Col>

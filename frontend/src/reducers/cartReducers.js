@@ -2,6 +2,7 @@ import {
     CART_ADD_ITEM,
     CART_REMOVE_ITEM,
     CART_SAVE_BOOKING_ADDRESS,
+    CART_SAVE_PAYMENT_METHOD,
   } from '../constants/cartConstants'
   
   export const cartReducer = (
@@ -32,11 +33,18 @@ import {
           ...state,
           cartItems: state.cartItems.filter((x) => x.book !== action.payload),
         }
+
       case CART_SAVE_BOOKING_ADDRESS:
         return {
           ...state,
           bookingAddress: action.payload,
         }
+
+      case CART_SAVE_PAYMENT_METHOD:
+        return {
+          ...state,
+          paymentMethod: action.payload,
+        }  
       default:
         return state
     }
